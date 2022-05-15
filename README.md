@@ -6,7 +6,7 @@ TreasureData Coding test instruction!
 3. Install MySql & Create a local database called "td_coding_challenge"
  - Create two tables: custombers_tmp, pageviews_tmp
 4. Data Ingestion
- - customers_x.csv: custombers_tmp
+ - customers_x.csv: customers_tmp
  - pageviews_x.csv: pageviews_tmp
 5. Data Preparation
  - Insert custombers_x.csv data to customers_tmp table except job_title 'Sales'
