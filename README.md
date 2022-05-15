@@ -16,6 +16,6 @@ TreasureData Coding test instruction!
 7. Data Analysis
  - Write query 1: Returns the totla number of pageviews from users who are browsing with a Windows OS or have "Engineer" in their job title
  - Write query 2: Returns top 3 user_id's(ranked by total pageviews) who have viewed a web page with a ".gov" domain extension. And then show last page viewd by each of these user_id's.
- - Excuted above 2 queries by Digdag workflow and echo out the results.
+ - Excute above 2 queries by Digdag workflow and echo out the results.
 
 <END>
