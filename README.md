@@ -11,7 +11,7 @@ TreasureData Coding test instruction!
 5. Data Preparation
  - Insert custombers_x.csv data to customers_tmp table except job_title 'Sales'
  - Insert pageviews_x.csv data to pageviews_tmp table and parse the 'user_agent' column to 'operating_system' column that contain one of the foloowing values("Windows", "Macintosh", "Linux", or "Other").
-6. Digdag Worklfow Scrip
+6. Digdag Worklfow Script
  - Write a script excute above step 5 automatically.
 7. Data Analysis
  - Write query 1: Returns the totla number of pageviews from users who are browsing with a Windows OS or have "Engineer" in their job title
