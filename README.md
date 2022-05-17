@@ -21,5 +21,6 @@ TreasureData Coding test instruction!
 ### TEST
 ```bash
 $ source ~/.bashrc
+```
 
 <END>
