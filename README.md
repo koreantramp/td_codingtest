@@ -19,7 +19,8 @@ TreasureData Coding test instruction!
  - Write query 2: Returns top 3 user_id's(ranked by total pageviews) who have viewed a web page with a ".gov" domain extension. And then show last page viewd by each of these user_id's.
  - Excute above 2 queries by Digdag workflow and echo out the results.
 
-## Below is command guide
+
+## Below is command line guide
 ### 1. Install digdag
 Use 'sudo' to get root privileges
 
