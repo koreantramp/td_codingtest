@@ -42,16 +42,16 @@ Check the digdag installed correctly
 
 ### 2. Install Embulk
 ```bash
-$ curl --create-dirs -o ~/.embulk/bin/embulk -L "https://dl.embulk.org/embulk-latest.jar"
-$ chmod +x ~/.embulk/bin/embulk
-$ echo 'export PATH="$HOME/.embulk/bin:$PATH"' >> ~/.bashrc
-$ source ~/.bashrc
+# curl --create-dirs -o ~/.embulk/bin/embulk -L "https://dl.embulk.org/embulk-latest.jar"
+# chmod +x ~/.embulk/bin/embulk
+# echo 'export PATH="$HOME/.embulk/bin:$PATH"' >> ~/.bashrc
+# source ~/.bashrc
 ```
 
 Install Plugins
 ```bash
-$ embulk gem install embulk-input-postgresql
-$ embulk gem install embulk-output-postgresql
+# embulk gem install embulk-input-postgresql
+# embulk gem install embulk-output-postgresql
 ```
 
 ### 3. Install PostgreSql & Create a local database called "td_coding_challenge"
@@ -62,6 +62,7 @@ $ embulk gem install embulk-output-postgresql
 # systemctl enable postgresql-11
 # systemctl start postgresql-11
 ```
+
 Create two tables: custombers_tmp, pageviews_tmp
 ```bash
 # postgres psql
@@ -73,7 +74,7 @@ postgres=#CREATE TABLE pageviews_tmp (user_id varchar(36) not null, url varchar(
 ### 4. Run the Digdag PostgreSql workflow
 Command in terminal
 ```bash
-#cd digdag
+# cd digdag
 # digdag secrets --local --set pg.password=password
 # digdag run load_csv_temp_tables.dig
 ```
