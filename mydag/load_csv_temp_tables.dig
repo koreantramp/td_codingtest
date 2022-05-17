@@ -1,0 +1,78 @@
+timezone: UTC
+
+_export:
+  workflow_name: "td_coing_test"
+  start_msg:     "digdag ${workflow_name} start"
+  end_msg:       "digdag ${workflow_name} finish"
+  error_msg:     "digdag ${workflow_name} error"
+  pg:
+    host: 127.0.0.1
+    port: 5432
+    user: postgres
+    password_override: password
+    database: td_coding_challenge
+    strict_transaction: false
+
++start:
+  echo>: ${start_msg}
+
+
+# Data Ingestion
+
++create_tables:
+  +create_customers:
+    pg>: queries/create_customers.sql
+    create_table: customers
+
+  +create_pageviews:
+    pg>: queries/create_pageviews.sql
+    create_table: pageviews
+
+# Data Analysis
++analysis:
+
+  +count_pageviews:
+    pg>: queries/select_pageviews.sql
+    store_last_results: all
+
+  +print_q1:
+    echo>: ${pg.last_results}
+
+  +top_3_users:
+    pg>: queries/select_customers.sql
+    store_last_results: all
+
+  +print_q2:
+    echo>: ${pg.last_results}
+
+# End of Workflow
++end:
+  echo>: ${end_msg}
+
+_error:
+  echo>: ${error_msg}
+
+[root@localhost mydag]# cat load_csv_temp_tables.dig
+timezone: UTC
+
++start:
+  echo>: start ${session_time}
+
++disp_tmp_table_load:
+  echo>: ${moment(session_time).utc().format('YYYY-MM-DD HH:mm:ss Z')}
+
++load_customer_tmp:
+  sh>: embulk run ../try1/config_customer_data_load.yml
+
++load_pageview_tmp:
+  sh>: embulk run ../try1/config_pageview_data_load.yml
+
++disp_master_table_load:
+  echo>: ${moment(session_time).utc().format('YYYY-MM-DD HH:mm:ss Z')}
+
++load_master_table:
+  call>: insert_master_table.dig
+
++final_end:
+  echo>: finish ${session_time}
+
